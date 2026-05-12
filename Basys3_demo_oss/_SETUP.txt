@@ -41,14 +41,15 @@ powershell
 2. Install USB/IP tools in WSL
 bash
 	sudo apt install linux-tools-generic hwdata
-sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20
+	sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20
 
 3. List available USB devices (Windows PowerShell, as Admin)
 powershell
 	usbipd list
+
 example output:
 	BUSID  VID:PID    DEVICE                  STATE
-2-1    1234:5678  My USB Device           Not shared
+	2-1    1234:5678  My USB Device           Not shared
 
 4. Bind (share) the device — first time only
 powershell
@@ -60,5 +61,5 @@ powershell
 
 6. Verify in WSL
 bash
-lsusb
+	lsusb
 
