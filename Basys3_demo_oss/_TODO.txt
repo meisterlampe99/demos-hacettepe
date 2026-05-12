@@ -1,0 +1,49 @@
+(⌐■_■)
+The already working design contains a 24-bit counter whose 8 MSBs (most
+significant bits) are output via LEDs.
+
+(✿◕‿◕✿)
+A testbench, as well as all scripts for the "non-project mode", is also
+available in the folder.
+
+	top_level
+	top_level_tb
+	myconstraints.xdc
+	…
+
+ ༼ つ ◕_◕ ༽つ
+In addition, the module "slider_logic" is provided in the folder.
+
+(⊙_⊙)？
+The existing design is to be extended with this module.
+
+(⊙_◎)
+Extend the counter to 28 bits.
+It should be reprogrammed so that it can count both up
+and down. A new input "slider" should be synchronized to the system clock
+using the "slider_logic" module and serve as the counter's
+"direction input".
+Also extend the pin mapping in the constraint file so that the new signal
+is assigned to a physical switch on the board.
+
+(ಠಿ_ಠ)
+See also the sketch (reset signals are not shown!):
+
+              +-----------+         +-----------+
+              |           |  dir    |           |
+ slider >-----|  slider   |---/-----|  28-bit   |
+              |   logic   |  1      |  counter  |---/----> LEDs
+ clk >----+---|>          |      +--|>          |  8
+          |   +-----------+      |  +-----------+
+          |                      |
+          +----------------------+
+
+(⊙ｏ⊙）
+With the switch on the board, it should now be possible to change the
+counting direction of the counter.
+
+(👉ﾟヮﾟ)👉
+Show me the design on the FPGA as well as the source code,
+zip the folder and upload it to Moodle.
+Done
+

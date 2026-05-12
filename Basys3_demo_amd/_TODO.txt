@@ -1,0 +1,49 @@
+(⌐■_■)
+Das bereits lauffähige Design enthält einen 24-Bit Zähler dessen 8 MSBs (most
+significant bits) via LEDs ausgegeben werden.
+
+(✿◕‿◕✿)
+Es ist auch eine Testbench, als auch alle Skripte für den "non-project-mode" 
+im Ordner verfügbar.
+
+	top_level	
+	top_level_tb        
+	myconstraints.xdc
+	…
+
+ ༼ つ ◕_◕ ༽つ
+Weiters ist das Modul "slider_logic" im Ordner bereitgestellt.
+
+(⊙_⊙)？
+Das bestehende Design soll mit diesem Modul erweitert werden. 
+
+(⊙_◎)	
+Erweitern Sie den Zähler auf 28-bit.
+Dabei soll dieser so umprogrammiert werden, dass er sowohl nach oben als
+auch nach unten zählen kann. Ein neuer Eingang "slider" soll mit dem Modul 
+"slider_logic" an den Systemtakt synchronisiert werden und dem Zähler als 
+"Direction-Input" dienen.
+Erweitern Sie dazu das Pin-Mapping in der Constraint Datei, um das neue Signal
+einem physichen Schalter am Board zuzuweisen.
+
+(ಠಿ_ಠ)
+Siehe auch Skizze (reset Signale sind nicht eingezeichnet!):
+
+              +-----------+         +-----------+
+              |           |  dir    |           |
+ slider >-----|  slider   |---/-----|  28-bit   |
+              |   logic   |  1      |  counter  |---/----> LEDs
+ clk >----+---|>          |      +--|>          |  8
+          |   +-----------+      |  +-----------+
+          |                      |
+          +----------------------+
+
+(⊙ｏ⊙）
+Mit dem Schalter am Board soll es nun möglich sein, die Zählrichtung des 
+Zählers verändern zu können.
+
+(👉ﾟヮﾟ)👉
+Zeigen Sie mir das Design am FPGA als auch den Source code, 
+zippen Sie den Ordner und laden Sie ihn auf Moodle hoch. 
+Fertig
+

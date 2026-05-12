@@ -1,0 +1,5 @@
+.Xil/
+outputBit/
+outputSim/
+*.jou
+*.log
