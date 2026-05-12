@@ -1,0 +1,3 @@
+00 = is verilog based original demo from gowin
+01 = is rewritten to system verilog using slang (read_slang, instead of read_verilog)
+02 = is using read_verilog with the -sv flag (works but doesn't support stuff like `default_nettype)

@@ -1,0 +1,5 @@
+IO_LOC "sys_rst_n_IBUF_I" IOR10B;
+IO_LOC "sys_clk_IBUF_I" IOT10A;
+IO_LOC "led_OBUF_O_2" IOR2A;
+IO_LOC "led_OBUF_O_1" IOR2B;
+IO_LOC "led_OBUF_O" IOR3A;
