@@ -16,61 +16,17 @@ BASH commands
 # 3. for me this was not necessary, but if snap is missing in your path, add it:
 	export PATH=/snap/bin:$PATH
 
-# 5. generate ChipDB for Basys 3 (one time)
+     and to make it permanent
+	echo 'export PATH=/snap/bin:$PATH' >> ~/.bashrc
+
+# 4. generate ChipDB for Basys 3 (one time)
 	python3 /snap/openxc7/x1/opt/nextpnr-xilinx/python/bbaexport.py --device xc7a35tcpg236-1 --bba /tmp/xc7a35t.bba --xray /snap/openxc7/x1/opt/nextpnr-xilinx/external/prjxray-db/artix7
 
 	/snap/openxc7/x1/usr/bin/bbasm --l /tmp/xc7a35t.bba /tmp/xc7a35t.bin
 
 	cp /tmp/xc7a35t.bin ~/xc7a35t.bin
 
-# 6. add udev-rule to connect to target board (if you have one)
+# 5. add udev-rule to connect to target board (if you have one)
 	echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="0403", MODE="0666"' | sudo tee /etc/udev/rules.d/99-ftdi.rules
 
 	sudo udevadm control --reload-rules && sudo udevadm trigger
-
-
-
-
--- ONLY if you have a BASYS3 board and use WSL2 --
-
-## Additional steps if you want to hand over a physically connected board to WSL2
-1. Install usbipd-win on Windows
-powershell
-	winget install usbipd
-
-2. Install USB/IP tools in WSL
-bash
-	sudo apt install linux-tools-generic hwdata
-	sudo update-alternatives --install /usr/local/bin/usbip usbip /usr/lib/linux-tools/*-generic/usbip 20
-
-3. List available USB devices (Windows PowerShell, as Admin)
-powershell
-	usbipd list
-
-example output:
-	BUSID  VID:PID    DEVICE                  STATE
-	2-1    1234:5678  My USB Device           Not shared
-
-4. Bind (share) the device — first time only
-powershell
-	usbipd bind --busid 2-1
-
-5. Attach the device to WSL
-powershell
-	usbipd attach --wsl --busid 2-1
-
-6. Verify in WSL
-bash
-	lsusb
-
-
-
-
--- ONLY if you have a BASYS3, Icebreaker or Tang Nano/Primer board and use a native LINUX installation or a native LINUX in a VM
-
-add udev rules for ftdi
-	echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="0403", MODE="0666"' | sudo tee /etc/udev/rules.d/99-ftdi.rules
-
-load new rules
-	sudo udevadm control --reload-rules
-	sudo udevadm trigger
