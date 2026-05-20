@@ -3,6 +3,7 @@
 // Simulation with Icarus Verilog
 // VCD output for Surfer / GTKWave
 // ============================================================
+`timescale 1ns/1ps
 `default_nettype none
 
 module top_level_tb();
