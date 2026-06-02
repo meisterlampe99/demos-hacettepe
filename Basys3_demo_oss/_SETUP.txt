@@ -19,18 +19,20 @@ BASH commands
    and to make it permanent
 	echo 'export PATH=/snap/bin:$PATH' >> ~/.bashrc
 
-# 5. generate ChipDB for Basys 3 (one time)
+# 4. generate ChipDB for Basys 3 (one time)
 	python3 /snap/openxc7/x1/opt/nextpnr-xilinx/python/bbaexport.py --device xc7a35tcpg236-1 --bba /tmp/xc7a35t.bba --xray /snap/openxc7/x1/opt/nextpnr-xilinx/external/prjxray-db/artix7
 
 	/snap/openxc7/x1/usr/bin/bbasm --l /tmp/xc7a35t.bba /tmp/xc7a35t.bin
 
 	cp /tmp/xc7a35t.bin ~/xc7a35t.bin
 
-# 6. add udev-rule to connect to target board (if you have one)
+# 5. add udev-rule to connect to target board (if you have one)
 	echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="0403", MODE="0666"' | sudo tee /etc/udev/rules.d/99-ftdi.rules
 
 	sudo udevadm control --reload-rules && sudo udevadm trigger
 
+# 6. Install openFPGAloader with
+	Sudo apt install openfpgaloader
 
 
 
