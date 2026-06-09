@@ -3,8 +3,7 @@ The already working design contains a 24-bit counter whose 8 MSBs (most
 significant bits) are output via LEDs.
 
 (✿◕‿◕✿)
-A testbench, as well as all scripts for the "non-project mode", is also
-available in the folder.
+A testbench, as well as a constraint file are provided in the folder.
 
 	top_level
 	top_level_tb
