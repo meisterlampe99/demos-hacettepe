@@ -99,11 +99,11 @@ sim: $(SOURCES) $(TESTBENCH)
 
 # Simulation + open Surfer directly
 sim-surfer: sim
-	surfer & $(VCD_FILE)
+	surfer $(VCD_FILE) &
 
 # Simulation + open GTKWave
 sim-gtkwave: sim
-	gtkwave & $(VCD_FILE)
+	gtkwave $(VCD_FILE) &
 
 # ============================================================
 # Cleanup
