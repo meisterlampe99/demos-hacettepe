@@ -1,42 +1,18 @@
 BASH commands
-# 1. OSS CAD Suite
-	sudo apt update
+# 1. install Apio (includes OSS-CAD-Suite and OpenXC7, with many board database files pregenerated)
+    pip install apio
 
-	wget https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2026-04-20/oss-cad-suite-linux-x64-20260420.tgz
+   (in case pip installs are locked, make a virtual environemnt or use sudo xpip)
 
-	tar -xzf oss-cad-suite-linux-x64-20260420.tgz
-
-	source oss-cad-suite/environment
-
-# 2. OpenXC7 (nextpnr-xilinx)
-	sudo apt install snapd -y
-
-	wget -qO - https://raw.githubusercontent.com/openXC7/toolchain-installer/main/toolchain-installer.sh | bash
-
-# 3. for me this was not necessary, but if snap is missing in your path, add it:
-	export PATH=/snap/bin:$PATH
-
-   and to make it permanent
-	echo 'export PATH=/snap/bin:$PATH' >> ~/.bashrc
-
-# 4. generate ChipDB for Basys 3 (one time)
-	python3 /snap/openxc7/x1/opt/nextpnr-xilinx/python/bbaexport.py --device xc7a35tcpg236-1 --bba /tmp/xc7a35t.bba --xray /snap/openxc7/x1/opt/nextpnr-xilinx/external/prjxray-db/artix7
-
-	/snap/openxc7/x1/usr/bin/bbasm --l /tmp/xc7a35t.bba /tmp/xc7a35t.bin
-
-	cp /tmp/xc7a35t.bin ~/xc7a35t.bin
-
-# 5. add udev-rule to connect to target board (if you have one)
+# 2. add udev-rule to connect to target board (if you have one)
 	echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="0403", MODE="0666"' | sudo tee /etc/udev/rules.d/99-ftdi.rules
 
 	sudo udevadm control --reload-rules && sudo udevadm trigger
 
-# 6. Install openFPGAloader with
-	Sudo apt install openfpgaloader
-
 
 
 -- ONLY if you have a BASYS3 board and use WSL2 --
+---- uploading of bitstream is faster in WSL2 ----
 
 ## Additional steps if you want to hand over a physically connected board to WSL2
 1. Install usbipd-win on Windows

@@ -16,13 +16,13 @@ TARGETFREQ  = 100
 # ------------------------------------------------------------
 
 # --- Tool Paths ---------------------------------------------
-YOSYS       = yosys
-NEXTPNR     = openxc7.nextpnr-xilinx
-FASM2FRAMES = openxc7.fasm2frames
-FRAMES2BIT  = openxc7.xc7frames2bit
-LOADER      = openFPGALoader
-CHIPDB      = $(HOME)/xc7a35t.bin
-XRAY_DB     = /snap/openxc7/x1/opt/nextpnr-xilinx/external/prjxray-db/artix7
+YOSYS       = $(HOME)/.apio/packages/oss-cad-suite/bin/yosys
+NEXTPNR     = $(HOME)/.apio/packages/openxc7/bin/nextpnr-xilinx
+FASM2FRAMES = $(HOME)/.apio/packages/openxc7/bin/fasm2frames
+FRAMES2BIT  = $(HOME)/.apio/packages/openxc7/bin/xc7frames2bit
+LOADER      = $(HOME)/.apio/packages/oss-cad-suite/bin/openFPGALoader
+CHIPDB      = $(HOME)/.apio/packages/openxc7/chipdb/xc7a35tcpg236.bin
+XRAY_DB     = $(HOME)/.apio/packages/openxc7/share/nextpnr/external/prjxray-db/artix7
 PART_YAML   = $(XRAY_DB)/$(PART)/part.yaml
 # ------------------------------------------------------------
 
