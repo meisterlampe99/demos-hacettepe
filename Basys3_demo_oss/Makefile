@@ -24,6 +24,11 @@ LOADER      = $(HOME)/.apio/packages/oss-cad-suite/bin/openFPGALoader
 CHIPDB      = $(HOME)/.apio/packages/openxc7/chipdb/xc7a35tcpg236.bin
 XRAY_DB     = $(HOME)/.apio/packages/openxc7/share/nextpnr/external/prjxray-db/artix7
 PART_YAML   = $(XRAY_DB)/$(PART)/part.yaml
+IVERILOG	= $(HOME)/.apio/packages/oss-cad-suite/bin/iverilog
+VVP			= $(HOME)/.apio/packages/oss-cad-suite/bin/vvp
+SURFER	 	= $(HOME)/.apio/packages/oss-cad-suite/bin/surfer
+GTKWAVE     = $(HOME)/.apio/packages/oss-cad-suite/bin/gtkwave
+
 # ------------------------------------------------------------
 
 # --- Simulation Settings ------------------------------------
@@ -92,18 +97,18 @@ flash: $(PROJECT).bit
 # ============================================================
 sim: $(SOURCES) $(TESTBENCH)
 	@echo "=== SIMULATION with Icarus Verilog ==="
-	iverilog -o $(SIM_OUT) -g2012 $(TESTBENCH) $(SOURCES)
-	vvp $(SIM_OUT)
+	$(IVERILOG) -o $(SIM_OUT) -g2012 $(TESTBENCH) $(SOURCES)
+	$(VVP) $(SIM_OUT)
 	@echo "=== VCD file created: $(VCD_FILE) ==="
 	@echo "=== Open with: surfer $(VCD_FILE) ==="
 
 # Simulation + open Surfer directly
 sim-surfer: sim
-	surfer $(VCD_FILE) &
+	$(SURFER) $(VCD_FILE) &
 
 # Simulation + open GTKWave
 sim-gtkwave: sim
-	gtkwave $(VCD_FILE) &
+	$(GTKWAVE) $(VCD_FILE) &
 
 # ============================================================
 # Cleanup
