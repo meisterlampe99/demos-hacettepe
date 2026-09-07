@@ -45,7 +45,7 @@ sudo udevadm control --reload-rules && sudo udevadm trigger
 
 > Uploading the bitstream is faster in WSL2.
 
-### Handover andid FPGA board to WLS2
+### Handover an FPGA board to WLS2
 Additional steps to share a physically connected board with WSL2
 
 #### 1. Install usbipd-win on Windows
